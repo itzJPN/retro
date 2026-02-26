@@ -1,0 +1,16 @@
+name: Deploy to Wasmer
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Deploy with Wasmer CLI
+      run: |
+        curl https://get.wasmer.io -sSfL | sh
+        wasmer login ${{ secrets.WASMER_TOKEN }}
+        wasmer deploy
