@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Deploy with Wasmer CLI
-      run: |
-        curl https://get.wasmer.io -sSfL | sh
-        wasmer login ${{ secrets.WASMER_TOKEN }}
-        wasmer deploy
+   - name: Deploy with Wasmer CLI
+  run: |
+    curl https://get.wasmer.io -sSfL | sh
+    source $HOME/.wasmer/wasmer.sh
+    wasmer login ${{ secrets.WASMER_TOKEN }}
+    wasmer deploy
