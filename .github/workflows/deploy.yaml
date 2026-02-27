@@ -13,7 +13,7 @@ jobs:
 
     - name: Install Wasmer CLI
       run: |
-        curl https://get.wasmer.io -sSfL | sh -- --no-modify-profile
+        curl https://get.wasmer.io -sSfL | sh --
         source $HOME/.wasmer/wasmer.sh
         wasmer --version
 
