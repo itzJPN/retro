@@ -1,3 +1,4 @@
 name: ItzJPN
-type: static
 package: .
+kind: static
+type: static
