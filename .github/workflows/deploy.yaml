@@ -24,4 +24,4 @@ jobs:
         source $HOME/.wasmer/wasmer.sh
         wasmer login $WASMER_TOKEN
         cd $GITHUB_WORKSPACE
-        wasmer deploy --owner incjosiah --build-remote
+        wasmer deploy --owner incjosiah --build-remote --force
