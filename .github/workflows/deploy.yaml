@@ -8,22 +8,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    # 1️⃣ Checkout the repo
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    # 2️⃣ Install Wasmer CLI (latest)
-    - name: Install Wasmer
+    - name: Install Wasmer CLI
       run: |
-        curl https://get.wasmer.io -sSfL | sh --
+        curl https://get.wasmer.io -sSfL | sh -- --no-modify-profile
         source $HOME/.wasmer/wasmer.sh
         wasmer --version
 
-    # 3️⃣ Deploy your site
     - name: Deploy to Wasmer
       env:
         WASMER_TOKEN: ${{ secrets.WASMER_TOKEN }}
       run: |
         source $HOME/.wasmer/wasmer.sh
         wasmer login $WASMER_TOKEN
-        wasmer deploy
+        cd $GITHUB_WORKSPACE
+        wasmer deploy --owner incjosiah
